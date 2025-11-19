@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NEMSU Secure Workspace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "ui-sans-serif", "system-ui"],
+            },
+            colors: {
+              brand: {
+                dark: "#102347",
+                DEFAULT: "#1F5FC5",
+                light: "#E6EDFF",
+              },
+            },
+            boxShadow: {
+              card: "0 25px 60px -35px rgba(9,18,66,0.45)",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100">
+    <main
+      class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-4 py-10 md:flex-row md:items-center md:gap-16 lg:px-0"
+    >
+      <div
+        class="absolute inset-0 -z-10 overflow-hidden rounded-[32px] bg-gradient-to-br from-brand-dark via-slate-900 to-slate-950 opacity-90"
+      >
+        <div class="floating-grid"></div>
+      </div>
+
+      <section class="w-full space-y-8 md:w-1/2">
+        <span
+          class="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-2 text-sm text-white/80"
+        >
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          Secure Faculty Workspace
+        </span>
+
+        <div class="space-y-4">
+          <h1 class="text-4xl font-semibold leading-tight md:text-5xl">
+            Role-aware login for protected assessments
+          </h1>
+          <p class="text-base text-white/80">
+            Faculty and staff enter using institutional credentials or
+            authenticate with Google. Every session is mapped to verified user
+            roles so participation in evaluations stays accurate and
+            traceable.
+          </p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <article class="feature-card">
+            <div class="feature-icon bg-emerald-500/10 text-emerald-400">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M12 3v6m0 6v6m9-9h-6m-6 0H3"
+                />
+              </svg>
+            </div>
+            <h3>Google single sign-on</h3>
+            <p>Launch Workspace with one click using Google Identity.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon bg-sky-500/10 text-sky-400">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.6"
+                  d="M4 7h16M4 12h16M4 17h16"
+                />
+              </svg>
+            </div>
+            <h3>Role-bound access</h3>
+            <p>Every login is tied to staff/faculty roles to enforce policy.</p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        class="w-full max-w-md rounded-[28px] bg-white/95 p-8 text-slate-900 shadow-card backdrop-blur-lg"
+      >
+        <div class="space-y-1 text-center">
+          <p class="text-sm font-medium text-brand">Welcome back</p>
+          <h2 class="text-2xl font-semibold">NEMSU Access Workspace</h2>
+          <p class="text-xs text-slate-500">
+            Only institutional accounts are allowed inside.
+          </p>
+        </div>
+
+        <form id="login-form" class="mt-8 space-y-5">
+          <div class="space-y-1">
+            <label for="email" class="text-sm font-medium text-slate-600"
+              >Institutional Email</label
+            >
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="firstname.lastname@nemsu.edu"
+              required
+              class="form-input"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label for="password" class="text-sm font-medium text-slate-600"
+              >Password</label
+            >
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              minlength="8"
+              required
+              class="form-input"
+            />
+          </div>
+
+          <div class="space-y-1">
+            <label for="role" class="text-sm font-medium text-slate-600"
+              >Select role</label
+            >
+            <select id="role" name="role" class="form-input" required>
+              <option value="">Choose your role</option>
+              <option value="faculty">Faculty</option>
+              <option value="program-head">Program Head</option>
+              <option value="staff">Administrative Staff</option>
+            </select>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-500">
+            <label class="inline-flex items-center gap-2">
+              <input
+                id="remember"
+                type="checkbox"
+                class="rounded border-slate-300 text-brand focus:ring-brand"
+              />
+              Keep me signed in
+            </label>
+            <a href="#" class="font-semibold text-brand">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="primary-btn">Access workspace</button>
+        </form>
+
+        <div class="mt-6 flex items-center gap-4 text-xs text-slate-400">
+          <span class="h-px flex-1 bg-slate-200"></span>
+          Or continue with
+          <span class="h-px flex-1 bg-slate-200"></span>
+        </div>
+
+        <button id="google-btn" class="google-btn">
+          <img
+            src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+            alt="Google logo"
+          />
+          Sign in with Google
+        </button>
+
+        <p id="status" class="mt-4 min-h-[24px] text-center text-sm"></p>
+      </section>
+    </main>
+
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
+
